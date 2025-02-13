@@ -65,3 +65,9 @@ switch (true) {
     console.log("Fail");
     break;
 }
+
+let gender = prompt("what is your gender?'M' or 'F'");
+gender === "m" ? console.log("Male") : console.log("Female");
+
+const drink = prompt("What would you like to drink? Tea or Coffee");
+drink === "Tea" ? console.log("Tea is ready") : console.log("Coffee is ready");
