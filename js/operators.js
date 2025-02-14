@@ -37,3 +37,8 @@ if (nagarita === "Y" || voterid === "Y") {
 } else {
   console.log("You can not vote");
 }
+
+const user = prompt("Enter your name");
+if (!user) {
+  alert("User name is missing");
+}
