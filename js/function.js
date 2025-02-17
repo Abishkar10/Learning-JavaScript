@@ -8,6 +8,12 @@
 //3. Parameterized function
 //4. Closure function
 //5. IIFEs function
+//6. Explicit function
+//7. Implicit function
+//8. Anonymous function
+//9. Inline function
+//10. Callback function
+//12. Pure function
 
 //function to add two numbers
 
@@ -178,3 +184,129 @@ console.log(volume({ length: 5, breadth: 6 }));
     console.log(`${num} * ${i} = ${num * i}`);
   }
 })(8);
+
+//closure function
+
+// let count = 1;
+// const counter = () => {
+//   const increment = count + 1;
+//   return count++;
+// };
+
+// console.log(counter());
+
+const counter = () => {
+  let count = 1;
+  return () => {
+    const increment = count++;
+    return increment;
+  };
+};
+
+const counterA = counter();
+const counterB = counter();
+const counterC = counter();
+const counterD = counter();
+
+console.log(counterA()); //dashain
+console.log(counterA()); //dashain
+console.log(counterA()); //dashain
+
+console.log(counterB()); //tihar
+console.log(counterB()); //tihar
+
+//private variables
+//local variables
+//global variables
+//lexical scoping
+//outer scope
+//closure concept
+
+//explicit and implicit function
+
+//explicit function
+
+const summer = () => {
+  return 0;
+};
+
+console.log({ summer: summer() });
+
+//implicit function
+
+const summera = () => 0;
+
+const add = (a, b) => a + b;
+
+console.log(add(5, 6));
+console.log(summera());
+
+//anonymous function
+//function without a name
+
+const test = function () {
+  console.log("test");
+};
+
+test();
+
+//inline function
+
+const testInline = function () {};
+
+//callback function
+//function passed as an argument to another function
+
+const print = (data) => {
+  console.log(`Hello ${data}`);
+};
+
+const main = (user = "User", callback) => {
+  const info = `Mr ${user}`;
+  return callback(info);
+};
+
+main("Abishkar", print);
+
+// Write a javascript function that caclulates the volume of a cuboid
+
+const volumeOfCuboid = ({ length = 1, breadth = 1, height = 1 }) =>
+  length * breadth * height;
+
+console.log(volumeOfCuboid({ length: 5, breadth: 6, height: 7 }));
+
+//write a javascript closure function that depicts bank opening and depositing money
+
+const bank = () => {
+  let balance = 0;
+  return (amount) => {
+    balance += amount;
+    return balance;
+  };
+};
+
+const account1 = bank();
+const account2 = bank();
+
+console.log(account1(1000));
+console.log(account1(2000));
+console.log(account1(3000));
+
+console.log(account2(5000));
+console.log(account2(5000));
+
+//write a callback function to calculate the vat of a product
+
+const calculateVat = (price, vat, callback) => {
+  const totalVat = price * vat;
+  return callback(totalVat);
+};
+
+const printVat = (vat) => {
+  console.log(`The total vat is ${vat}`);
+};
+
+calculateVat(100, 0.13, printVat);
+
+
+//pure function
