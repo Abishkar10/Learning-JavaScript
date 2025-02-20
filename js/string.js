@@ -44,14 +44,15 @@ console.log(checkMobile("4415860"));
 //write a js function to create a proper case
 //"abishkar jung shah" => "Abishkar Jung Shah"
 
-const propercase = (string = "") => {
+const propercase = (data = "") => {
+  let string = String(data.toLowerCase());
   let result = "";
   const length = string.length;
   let capitalize = true;
   for (let i = 0; i < length; i++) {
     let str = string[i];
 
-    if (capitalize && str.match(/[a-zA-z]/)) {
+    if (capitalize == true) {
       result += str.toUpperCase();
       capitalize = false;
     } else {
@@ -71,7 +72,7 @@ console.log(propercase("the old tree is being cut down"));
 // "    Abishkar    Jung    Shah" => "Abishkar Jung Shah"
 
 const clean = (string = "") => {
-  return string.trim().replace(/\s+/g, " ");
+  return string.trim().replaceAll(" ", " ").replaceAll(" ", " ");
 };
 
 console.log(clean("    Abishkar    Jung    Shah"));
@@ -87,6 +88,21 @@ const formatnum = (number = 0) => {
 console.log(formatnum(500000000));
 console.log(formatnum(5215448465131564186461));
 
+const formatnumber = (string = "") => {
+  let parts = [];
+  let count = 0;
+
+  for (let i = string.length - 1; i >= 0; i--) {
+    parts.push(string[i]);
+    count++;
+    count % 3 === 0 && i != 0 ? parts.push(",") : 0;
+  }
+  return parts.reverse().join("");
+};
+
+console.log(formatnumber("100000000"));
+console.log(formatnumber("1132341234123423412412512312"));
+
 //Write a js function to check if the string contains a word or not
 //"Abishkar is a student". check "student" => true
 //"Abishkar is a student". check "teacher" => false
@@ -94,7 +110,7 @@ console.log(formatnum(5215448465131564186461));
 const check = (string = "", word = "") => {
   let char = string.toLowerCase();
   let checkword = word.toLowerCase();
-  let words = char.trim().split(/\s+/);
+  let words = char.trim().split(" ");
   for (let i = 0; i < words.length; i++) {
     if (checkword === words[i]) {
       return true;
@@ -105,5 +121,16 @@ const check = (string = "", word = "") => {
 
 let result1 = check("Abishkar is a student", "student");
 let result2 = check("Abishkar is a student", "teacher");
+let result3 = check("The world is a mess", "World");
 console.log(result1);
 console.log(result2);
+console.log(result3);
+
+const checker = (string = "", word = "") => {
+  let char = string.toLowerCase();
+  let checkword = word.toLowerCase();
+  return char.includes(checkword) ? true : false;
+};
+
+console.log(checker("A bus hit a car", "bus"));
+console.log(checker("A bus hit a car", "van"));
