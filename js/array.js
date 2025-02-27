@@ -81,3 +81,4 @@ console.log(reverse);
 const secondoldest = player.sort((a, b) => b.age - a.age)[1];
 console.log(secondoldest);
 
+//6         
